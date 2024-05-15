@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Mouseover Experience</title>
+<style>
+  /* Optional CSS styling */
+  #mouseover-element {
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #mouseover-element:hover {
+    background-color: #e74c3c;
+  }
+</style>
+</head>
+<body>
+
+<div id="mouseover-element">Hover Over Me</div>
+
+<script>
+  // JavaScript code
+  const mouseoverElement = document.getElementById('mouseover-element');
+
+  // Function to change the background color on mouseover
+  function changeColorOnMouseover() {
+    mouseoverElement.style.backgroundColor = getRandomColor();
+  }
+
+  // Function to generate a random color
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  // Event listener to trigger the function on mouseover
+  mouseoverElement.addEventListener('mouseover', changeColorOnMouseover);
+</script>
+
+</body>
+</html>

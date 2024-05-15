@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heading{
+            justify-content: center;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .head{
+            font-weight: bolder;
+            font-size: 50px;
+        }
+        .para{
+            font-style: italic;
+            color: blueviolet;
+        }
+        #img1{
+            height: 200px;
+            width: 400px;
+        }
+        main{
+            display: flex;
+        }
+        .right li{
+            display: inline;
+        }
+        .container{
+            height: 500px;
+            width: 300px;
+            
+        }
+        #img1{
+           padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="heading">
+           <div class="head">About</div>
+           <div class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        </div>
+        <main>
+            <div class="left">
+                <img id="img1" src="iphone.jpg" alt="img">
+            </div>
+            <div class="right">
+                <ul>
+                    <li><button id="his" onclick="changeme(this.id)">History</button></li>
+                    <li><button id="vis" onclick="changeme(this.id)">Vision</button></li>
+                    <li><button id="goa" onclick="changeme(this.id)">Goals</button></li>
+                </ul>
+                <div class="container" id="container">
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function changeme(id)
+        {
+            var container = document.getElementById("container");
+            if (id === "his") {
+                console.log(id);
+                container.innerHTML = "I am inside history.";
+            } else if (id === "vis") {
+                container.innerHTML = "I am inside vision.";
+            } else {
+                container.innerHTML = "I am inside neither history nor vision.";
+            }
+        }
+    </script>
+</body>
+</html>

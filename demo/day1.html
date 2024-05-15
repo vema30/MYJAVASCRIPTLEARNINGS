@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+</head>
+<body>
+    <button id="myButton">Click me!</button>
+
+    <script>
+        // Find the button element in the DOM
+let button = document.getElementById("myButton");
+
+// Change the text on the button
+button.textContent = "Don't click me!";
+
+// Change the background color of the button
+button.style.backgroundColor = "red";
+
+// Add a click event listener to the button
+button.addEventListener("click", function() {
+    alert("Ouch! Why did you click me?");
+});
+
+    </script>
+</body>
+</html>

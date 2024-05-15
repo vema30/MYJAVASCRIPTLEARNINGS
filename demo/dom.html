@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom example</title>
+</head>
+<body>
+     <div id="myDiv">Hello World</div>
+     <script>
+        const mydiv = document.getElementById('myDiv');
+        console.log(mydiv.textContent);
+        mydiv.textContent="goodbye ,world";
+        mydiv.style.background='red';
+        
+       
+        mydiv.style.height='auto';
+        mydiv.style.width='auto';
+        const paragraph = document.createElement('p');
+        paragraph.textContent='HELL0 am paragraph';
+        const container = document.getElementById('myDiv');
+        container.appendChild(paragraph);
+
+        var btn = document.createElement('button');
+        btn.setAttribute('containerName', 'mybtn');
+
+        btn.style.height='100px';
+        btn.style.width='100px';
+        btn.style.background='blue';
+      
+        container.appendChild(btn);
+        const btn1= document.getElementsByName('mybtn');
+        mybtn.style.background='pink';
+
+     </script>
+</body>
+</html>

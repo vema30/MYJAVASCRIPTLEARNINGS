@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnagramCheck</title>
+</head>
+<body>
+     <div class="wrapper">
+        <nav>
+            <h1>GeeksforGeeks</h1>
+            <h1>Anagram Checker</h1>
+        </nav>
+        <main>
+            <input type="text" id="txt1" placeholder="Enter text1">
+            <input type="text" id="txt2" placeholder="Enter text2">
+        </main>
+        <div class="footer">
+            <button onclick="isAnagram()">Check</button>
+        </div>
+        <div class="isan" id="result"></div> <!-- Corrected: Added id attribute for result -->
+     </div>
+     <script>
+        function isAnagram()
+        {
+            const txt1 = document.getElementById("txt1").value;
+            const txt2 = document.getElementById("txt2").value;
+            const sortedTxt1 = sort(txt1); // Corrected: storing sorted strings in variables
+            const sortedTxt2 = sort(txt2);
+            if(sortedTxt1 === sortedTxt2) // Corrected: using === for comparison
+            {
+                document.getElementById("result").innerHTML = "YES"; // Corrected: using getElementById
+            }
+            else{
+                document.getElementById("result").innerHTML = "no"; // Corrected: using getElementById
+            }
+        }
+        
+        function sort(str) {
+            return str.toLowerCase().split('').sort().join('');
+        }
+     </script>
+</body>
+</html>

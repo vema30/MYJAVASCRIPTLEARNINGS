@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game</title>
+</head>
+<body>
+    <div>
+        <p class="question"></p>
+        <input type="text" id="answer">
+        <button onclick="checkAnswer()">Check Answer</button>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <script>
+        function generateQuestion() {
+            var num1 = Math.floor(Math.random() * 10);
+            var num2 = Math.floor(Math.random() * 10);
+            var question = `What is ${num1} * ${num2} ?`;
+            document.querySelector('.question').textContent = question;
+            return num1 * num2;
+        }
+
+        function checkAnswer() {
+            var userAnswer = parseInt(document.getElementById("answer").value);
+            var correctAnswer = generateQuestion();
+            var score = parseInt(document.getElementById("score").innerText);
+
+            if (userAnswer === correctAnswer) {
+                score++;
+            } else {
+                score--;
+            }
+
+            document.getElementById("score").innerText = score;
+        }
+
+        // Initial question generation
+        generateQuestion();
+    </script>
+</body>
+</html>

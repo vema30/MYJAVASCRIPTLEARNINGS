@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Bud</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(172, 204, 232);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+         .wrapper {
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+
+         .heading {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+         }
+
+         main {
+            display: flex;
+            justify-content: space-between;
+         }
+
+         .container {
+            flex-grow: 1;
+            margin-right: 10px;
+         }
+
+         .container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+         }
+
+         .submit button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+         }
+
+         .items {
+            margin-top: 20px;
+         }
+
+         .items ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+         }
+
+         .items li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         }
+
+         .items li:last-child {
+            border-bottom: none;
+         }
+
+         .items li button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 5px;
+         }
+
+         .items li button:hover {
+            background-color: #f44336;
+            color: #fff;
+         }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="heading">Grocery Bud</div>
+        <main>
+            <div class="container">
+                <input type="text" id="itemInput" placeholder="Add an item">
+            </div>
+            <div class="submit">
+                <button id="btnAdd">Add</button>
+            </div>
+        </main>
+        <div class="items">
+            <ul id="itemList"></ul>
+        </div>
+        <div class="but">
+            <button id="btnclear">Clear Items</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const addItemButton = document.getElementById("btnAdd");
+            const clearItemsButton = document.getElementById("btnclear");
+            const itemList = document.getElementById("itemList");
+            const itemInput = document.getElementById("itemInput");
+
+            function addItem(text) {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <span>${text}</span>
+                    <button class="btnEdit">Edit</button>
+                    <button class="btnDelete">Delete</button>
+                `;
+                itemList.appendChild(listItem);
+            }
+
+            addItemButton.addEventListener("click", function() {
+                const newItem = itemInput.value.trim();
+                if (newItem !== "") {
+                    addItem(newItem);
+                    itemInput.value = "";
+                }
+            });
+
+            itemList.addEventListener("click", function(event) {
+                if (event.target.classList.contains("btnDelete")) {
+                    event.target.parentElement.remove();
+                } else if (event.target.classList.contains("btnEdit")) {
+                    const span = event.target.parentElement.querySelector("span");
+                    const newText = prompt("Edit item:", span.textContent);
+                    if (newText !== null && newText !== "") {
+                        span.textContent = newText;
+                    }
+                }
+            });
+
+            clearItemsButton.addEventListener("click", function() {
+                itemList.innerHTML = "";
+            });
+        });
+    </script>
+</body>
+</html>

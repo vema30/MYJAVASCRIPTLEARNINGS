@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Find the container element in the DOM
+        let container = document.getElementById("container");
+
+        // Create a paragraph element
+        let paragraph = document.createElement("p");
+        paragraph.textContent = "This is a paragraph.";
+
+        // Create a button element
+        let button = document.createElement("button");
+        button.textContent = "Click me!";
+        button.style.alignItems = "center";
+        button.style.alignContent = "center";
+
+        // Add an event listener to the button
+        button.addEventListener("click", function() {
+            alert("You clicked the button!");
+        });
+
+        // Add elements to the container in a loop
+        for(let i = 0; i < 10; i++) {
+            // Append paragraph
+            container.appendChild(paragraph.cloneNode(true)); // Clone the paragraph to avoid moving the original
+
+            // Append button
+            container.appendChild(button.cloneNode(true)); // Clone the button to avoid moving the original
+        }
+    </script>
+</body>
+</html>

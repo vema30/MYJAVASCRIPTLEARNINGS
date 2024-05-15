@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown</title>
+    <style>
+        BODY{
+            position: fixed;
+        }
+        #iphone{
+            padding-top: 100px;
+            height: 270px;
+            width: 300px;
+        }
+        .container{
+            position: fixed;
+            height: 400px;
+            width: 700px;
+            background-color: #dddbf3;
+            margin-top: 170px;
+            margin-right:200px;
+            margin-left: 200px;
+            display: flex;
+        }
+        .right-part h3{
+            text-align: center;
+            color: #130c79;
+        }
+        .right-part #p1
+        {
+            text-align: center;
+            font-weight: bold;
+        }
+        .right-part{
+            
+            justify-content: center;
+            padding-left: 10px;
+            width: 700px;
+        }
+        .right-part #p2{
+            justify-content: space-between;
+            color: #6963c6;
+        }
+        .timer {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+        .wrapper{
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="photo">
+                <img id="iphone" src="iphone.jpg" alt="iphone" title="iphone">
+            </div>
+            <div class="right-part">
+                <h3>OLD Iphone giveaway</h3>
+                <p id="p1">Giveaway ends on Friday, 2 April 2021 11:30am</p>
+                <p id="p2">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur inventore <br>incidunt commodi vitae laboriosam hic velit praesentium aperiam, harum reprehenderit nihil fuga facilis quod quo dignissimos, quae eaque architecto dolorum.
+                </p>
+                <div class="timer" id="countdown"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("MAY 12, 2024 11:30:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get the current date and time
+            var now = new Date().getTime();
+
+            // Calculate the distance between now and the countdown date
+            var distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = "Countdown: " + days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

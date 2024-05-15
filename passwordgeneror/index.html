@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        .text-bar{
+            margin: 10px;
+            height: 50px;
+            width: 500px;
+            background-color: whitesmoke;
+        }
+        .bar1{
+            display: flex;
+            margin-top: 50px;
+            justify-content: center;
+        }
+        .len{
+            display: flex;
+            justify-content: center;
+        }
+        .number{
+            width: 200px;
+            height: 100px;
+            font-size: 30px;
+            margin-top: 50px;
+
+            
+        }
+        .selector{
+            padding-left: 200px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 10px;
+           
+        }
+        .selector > div {
+            border: 1px solid black;
+           
+            width: 100px;
+
+            background-color: blueviolet;
+            text-align: center;
+            justify-content:center ;
+            
+        }
+        input[type="checkbox"] {
+            margin-top: 5px;
+        }
+        .generate{
+            text-align: center;
+            margin-top: 40px;
+        }
+        #btn-generator{
+            width: 100px;
+            height: 50px;
+            background-color: greenyellow;
+        }
+        .wrapper{
+            text-align: center;
+            justify-content: center;
+        }
+        .head-1, span{
+          font-size: 100px;
+          text-align: center;
+         
+
+        }
+        .conatiner{
+          
+           background-color: rgb(255, 0, 242);
+           margin-left: 300px;
+           margin-right: 300px;
+        }
+        #btn-copy{
+            background-color: black;
+            color: azure;
+            padding: 10px;
+            margin-top: 15px;
+        }
+        body{
+            background-color: aquamarine;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="head-1">
+           <span>Password Generator</span> 
+        </div>
+        <div class="conatiner">
+            <div class="bar1">
+                <div class="text-bar"></div>
+                <div class="btn"><button id="btn-copy" onclick="copyText()">Copy</button></div>
+            </div>
+            <div class="len">
+                <input type="range" id="vol" name="vol" min="4" max="20" value="8">
+                <div class="number" id="lengthDisplay">Length: 8</div>
+            </div>
+            <div class="selector">
+                <div class="a-z">
+                    a-z
+                    <input type="checkbox" id="small"  name="a-z" checked>
+                </div>
+                <div class="A-Z">
+                    A-Z
+                    <input type="checkbox" id="big"  name="A-Z" checked>
+                </div>
+                <div class="0-9">
+                    0-9
+                    <input type="checkbox" id="num"  name="0-9" checked>
+                </div>
+                <div class="special">
+                   !@$$#^$*
+                    <input type="checkbox" id="special"  name=" !@$$#^$*" checked>
+                </div>
+            </div>
+            <div class="generate">
+                <button id="btn-generator" onclick="generatePassword()">Generate</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+        const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const numbers = '0123456789';
+        const specialCharacters = '!@#$%^&*()_+{}[]|\\;\',./<>?`~';
+
+        function generatePassword() {
+            const length = document.getElementById('vol').value;
+            const includeLowercase = document.getElementById('small').checked;
+            const includeUppercase = document.getElementById('big').checked;
+            const includeNumbers = document.getElementById('num').checked;
+            const includeSpecial = document.getElementById('special').checked;
+
+            let charset = '';
+            if (includeLowercase) charset += lowercaseLetters;
+            if (includeUppercase) charset += uppercaseLetters;
+            if (includeNumbers) charset += numbers;
+            if (includeSpecial) charset += specialCharacters;
+
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+
+            document.querySelector('.text-bar').textContent = password;
+        }
+
+        const rangeInput = document.getElementById('vol');
+        const lengthDisplay = document.getElementById('lengthDisplay');
+
+        // Add an event listener to the range input to listen for changes
+        rangeInput.addEventListener('input', function() {
+            // Retrieve the current value of the range input
+            const length = rangeInput.value;
+
+            // Update the content of the span element to display the length
+            lengthDisplay.textContent = `Length: ${length}`;
+        });
+        function copyText() {
+    var text = document.querySelector('.text-bar').textContent;
+
+    // Create a temporary textarea element
+    var textarea = document.createElement('textarea');
+    // Set the value of the textarea to the generated password
+    textarea.value = text;
+    // Append the textarea to the document body
+    document.body.appendChild(textarea);
+    // Select the content of the textarea
+    textarea.select();
+    // Execute the copy command
+    document.execCommand('copy');
+    // Remove the textarea from the document body
+    document.body.removeChild(textarea);
+}
+    </script>
+</body>
+</html>

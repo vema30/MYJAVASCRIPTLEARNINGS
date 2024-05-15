@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteApp</title>
+    <style>
+        .container {
+            background-color: aqua;
+            height: 200px;
+            width: 500px;
+            margin-top: 200px;
+            margin-left: 400px;
+            text-align: center;
+            padding-top: 50px;
+            font-size: 20px;
+        }
+        #btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <p id="quote">"Click the button to generate a quote"</p>
+            <button id="btn" onclick="generateQuote()">Next Quote</button>
+        </div>
+    </div>
+    <script>
+        // Define an array of quotes
+        var quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "You miss 100% of the shots you don't take. - Wayne Gretzky",
+            "It does not matter how slowly you go as long as you do not stop. - Confucius",
+            "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb"
+        ];
+
+        // Function to generate a random quote
+        function generateQuote() {
+            // Get a random index from the quotes array
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            // Update the quote text with the randomly selected quote
+            document.getElementById("quote").innerHTML = quotes[randomIndex];
+        }
+    </script>
+</body>
+</html>

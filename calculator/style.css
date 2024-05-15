@@ -1,0 +1,29 @@
+.text-bar{
+    height: 40px;
+    width: 412px;
+    background-color: aquamarine;
+    border: 4px solid black;
+}
+#btn ,#clearButton{
+   width: 100px;
+   height: 40px;
+}
+button{
+    align-items: center;
+    border: 3px solid black;
+}
+body{
+    background-color: brown;
+}
+#h1-head{
+    text-align: center;
+}
+button:hover{
+    
+    background-color: rgb(154, 183, 110);
+}
+body{
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+}
